@@ -1,11 +1,11 @@
 # Use an official nginx image as the base image
-FROM httpd:alpine
+FROM nginx:alpine
 
 # Copy the HTML files to the nginx html directory
-COPY . /usr/share/httpd/html
+COPY . /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
 # Start nginx when the container starts
-CMD ["httpd", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
