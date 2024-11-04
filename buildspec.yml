@@ -9,15 +9,15 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t basim-aws-assessment .
-      - docker tag basim-aws-assessment:0.2 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user26/basim-repo:latest
+      - docker build -t aws-assessment-basim .
+      - docker tag aws-assessment-basim:latest 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user26/basim-repo:latest
 
   post_build:
     commands:
       - echo Pushing the Docker image to ECR...
       - docker push 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user26/basim-repo:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"basim-aws-assessment-container","imageUri":"%s"}]' 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user26/basim-repo:latest > imagedefinitions.json
+      - printf '[{"name":"aws-assessment-basim-container","imageUri":"%s"}]' 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user26/basim-repo:latest > imagedefinitions.json
 
 artifacts:
   files: imagedefinitions.json
